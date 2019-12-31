@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- <script src="../Demojs/jquery.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  //使用原生的xml-------------------------------------------------------------
+  //1.创建xml 对象
+  // let xhr = new XMLHttpRequest();
+  // console.log(xhr.readyState); //0
+  // //2.发送请求
+  // xhr.onreadystatechange = function(backdata) {
+  //   console.log(xhr.readyState); //1   -- 2,3,4
+  //   if (xhr.readyState === 4) {
+  //     console.log(xhr.readyState); //4
+  //     console.log(backdata);
+  //     console.log(JSON.parse(xhr.responseText));
+  //   }
+  // };
+  // //3.发送
+  // xhr.open("get", "https://api.apiopen.top/musicRankings");
+  // console.log(xhr.readyState); //1
+  // xhr.send();
+  // console.log(xhr.readyState); //1
+
+
+  // 使用原生的xml------------------------------------------------------------
+  // 1.创建xml 对象
+  // let xhr= new XMLHttpRequest();
+
+  // //2.发送请求
+  // xhr.onreadystatechange = function(){
+  //     if(xhr.readyState === 4){
+  //         console.log(JSON.parse(xhr.responseText));
+  //         console.log(xhr);
+  //     }
+  // }
+  // //3.发送
+  // xhr.open('post',"http://localhost:4399/user/login");
+  // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  // xhr.send({username:'admin',password:'123456'});
+
+  //原生的xhr请求---------封装----------------------------------------------------------
+  // function ajax(type, url, data, success) {
+
+  //   let xhr = new XMLHttpRequest();
+
+  //   if (type === "get") {
+  //     url += "?";
+  //     url += data;
+  //   }
+  //   xhr.onreadystatechange = function() {
+  //     if (xhr.readyState === 4 && xhr.status === 200) {
+  //       success(xhr.responseText);
+  //     }
+  //   };
+  //   xhr.open(type, url);
+  //   if (type === "post") {
+  //     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  //     xhr.send(data);
+  //   } else {
+  //     xhr.send();
+  //   }
+  // }
+  // ajax("get", "https://api.apiopen.top/musicRankings", "", function(backdata) {
+  //   console.log(backdata);
+  // });
+
+  // ajax("post","http://localhost:4399/user/login",{ username: "hello", password: "123" },function(backdata) {
+  //     console.log(backdata);
+  // });
+
+  //jq的ajax 请求-----------------------------------------------------------------------------------------------------------
+  // $.ajax({
+  //   url: "https://api.apiopen.top/musicRankings",
+  //   type: "get",
+  //   dataType: "json",
+
+  //   beforeSend: function(xhr) {
+  //     console.log("before send");
+  //   },
+  //   success: function(data) {
+  //     console.log(data);
+  //   },
+  //   error: function(err) {
+  //     console.log(err);
+  //   },
+  //   complete: function() {
+  //     console.log("request completed");
+  //   }
+  // });
+
+  // $.ajax({
+  //   type:'post',
+  //   url:'http://localhost:4399/user/login',
+  //   data:{
+  //     username: "hello",
+  //     password: "123"
+  //   },
+  //   contentType:'application/x-www-form-urlencoded',
+  //   dataType:'json',
+  //   success:function(backdata){
+  //     console.log(backdata);
+
+  //   },
+  //   error:function(err){
+  //     console.log(err);
+
+  //   },
+  //   complete:function(){
+  //     console.log('不管是否成功都会执行');
+
+  //   }
+  // })
+
+  //使用axios-------------------------------------------------------------------------------------------------------------
+
+  // // let $http = axios.create();
+  // function getUserAccount() {
+  //   return axios
+  //     .post("http://localhost:4399/user/login", {
+  //       username: "小白",
+  //       password: "123"
+  //     })
+
+  // }
+
+  // function getUserPermissions() {
+  //   return axios.get("https://api.apiopen.top/musicRankings");
+  // }
+
+  // //axios的并发
+  // axios.all([getUserAccount(), getUserPermissions()]).then(
+  //   axios.spread(function(acct, perms) {
+  //     // 两个请求现在都执行完成
+  //     console.log(acct, perms);
+  //   })
+  // );
+</script>

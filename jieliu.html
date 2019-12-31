@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../Demojs/jquery.min.js"></script>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 2000px;
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="myinput" type="text" />
+  </body>
+</html>
+<script>
+  //https://api.apiopen.top/musicRankings
+//   $(function() {
+//     //节流
+//     $("#myinput").on("input", func(getAjax));
+//     function func(getAjax) {
+//   
+//       let isDone = true;
+//       return function() {
+//         if (!isDone) {
+//           return false;
+//         }
+//         isDone = false;
+//         setTimeout(() => {
+//           getAjax();
+//           isDone = true;
+//         }, 1000);
+//       };
+//     }
+
+//     function getAjax() {
+//       $.ajax({
+//         type: "get",
+//         url: "https://api.apiopen.top/musicRankings",
+//         success: function(backdata) {
+//           console.log(backdata);
+//         }
+//       });
+//     }
+//   });
+
+$(function(){
+    $('#myinput').on('input',func(getAjax));
+})
+
+function func(getAjax){
+    // let timeout = null;
+    // return function(){
+    //     if(timeout){
+    //         clearTimeout(timeout);
+    //     }
+    //     timeout = setTimeout(() => {
+    //         getAjax();
+    //     }, 1000);
+    // }
+    return getAjax
+}
+
+function getAjax(){
+    $.ajax({
+        type:'get',
+        url:"https://api.apiopen.top/musicRankings",
+        success:function(backdata){
+            console.log(backdata);
+            
+        }
+    })
+}
+
+
+</script>
+<script>
+  // 函数的防抖
+  //     //1.触发函数
+  //     //2.执行函数
+  //     //3.在一定的事件期限内如果再次触发函数是不会执行函数的,只有超过了期限值才会 触发
+  //   window.onscroll = delaty(fn, 1000);
+  //   function delaty(fn, time) {
+  //     let timeout = null;
+  //     return function() {
+  //       if (timeout) {
+  //         clearTimeout(timeout);
+  //       }
+  //       timeout = setTimeout(fn, time);
+  //     };
+  //   }
+  //   function fn() {
+  //     console.log("触发了函数");
+  //   }
+
+  // //函数的节流
+  // window.onscroll = throttle(fn,1000);
+  // function throttle(fn,time){
+  //     let valid = true;
+  //     return function (){
+  //         if(!valid){
+  //             return false;
+  //         }
+  //         valid = false;
+  //         setTimeout(() => {
+  //             fn();
+  //             valid = true;
+  //         }, time);
+  //     }
+  // }
+  // function fn(){
+  //     console.log('这是节流函数');
+
+  // }
+</script>
